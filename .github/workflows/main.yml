@@ -1,0 +1,39 @@
+name: Deploy NextHerm App to Azure
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
+
+jobs:
+    build-and-deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: "Checkout GitHub Action"
+              uses: actions/checkout@main
+
+            - name: "Login to Azure"
+              uses: azure/login@v1
+              with:
+                  creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+            - name: Setup Node 12.x
+              uses: actions/setup-node@v1
+              with:
+                  node-version: "12.x"
+
+            - name: "yarn install, build, and test"
+              run: |
+                  yarn
+                  yarn build --if-present
+                  yarn test --if-present
+
+            - name: "Deploy to Azure"
+              uses: azure/webapps-deploy@v2
+              with:
+                  app-name: "nexthermapp"
+
+            - name: Logout
+              run: |
+                  az logout
