@@ -1,4 +1,8 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NextHerm App
+
+![Deploy NextHerm App to Azure](https://github.com/folafunmi-db/next-herm/workflows/Deploy%20NextHerm%20App%20to%20Azure/badge.svg)
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) and deployed on Azure.
 
 ## Getting Started
 
