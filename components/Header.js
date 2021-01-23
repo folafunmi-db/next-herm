@@ -1,4 +1,4 @@
-import { Box, Flex, Icon, Avatar, Text } from "@chakra-ui/react";
+import { Box, Flex, Icon, Avatar, Text, Link } from "@chakra-ui/react";
 
 const User = ({ avatar, sub, username }) => {
 	return (
@@ -16,7 +16,7 @@ const User = ({ avatar, sub, username }) => {
 	);
 };
 
-const Header = () => {
+const Header = ({me}) => {
 	return (
 		<Box backgroundColor="#fafafb" paddingLeft="50px" paddingRight="50px">
 			<Flex
@@ -33,7 +33,12 @@ const Header = () => {
 						viewBox="0 0 40 40"
 					></Icon>
 				</Box>
-				<User username="Folafunmi M"></User>
+				<Flex alignItems="center" justifyContent="space-between">
+					<User username={me.name}></User>
+					<Link href="/api/logout" ml="15px">
+						Logout
+					</Link>
+				</Flex>
 			</Flex>
 		</Box>
 	);
