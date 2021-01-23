@@ -23,6 +23,12 @@ jobs:
               with:
                   node-version: "12.x"
 
+            - name: "yarn install, build, and test"
+              run: |
+                  yarn
+                  yarn build
+              #  yarn test
+
             - name: "Update Hasura config"
               env:
                   HASURA_GRAPHQL_ADMIN_SECRET: ${{ secrets.HASURA_GRAPHQL_ADMIN_SECRET }}
@@ -36,12 +42,6 @@ jobs:
                       HASURA_GRAPHQL_JWT_SECRET=$HASURA_GRAPHQL_JWT_SECRET \
                       HASURA_GRAPHQL_ENABLE_CONSOLE="false" \
                       HASURA_GRAPHQL_ENABLED_LOG_TYPES="startup, http-log, webhook-log, websocket-log, query-log"
-
-            - name: "yarn install, build, and test"
-              run: |
-                  yarn
-                  yarn build
-              #  yarn test
 
             - name: "Deploy to Azure"
               uses: azure/webapps-deploy@v2
