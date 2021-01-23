@@ -24,7 +24,7 @@ const Header = ({me}) => {
 				justifyContent="space-between"
 				height="50px"
 			>
-				<Box bg="gray.200" rounded="full">
+				<Box bg="gray.200" rounded="full" display="flex" alignItems="center" justifyContent="center">
 					<Icon
 						name="logo"
 						color="brand.500"

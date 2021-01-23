@@ -1,5 +1,7 @@
 import { Text } from "@chakra-ui/react";
 import Layout from "../components/Layout";
+import withApollo from "lib/apollo";
+import Account from "../components/Account";
 
 const Index = ({ me }) => {
 	return (
@@ -7,6 +9,7 @@ const Index = ({ me }) => {
 			<Text fontSize="40px" color="brand.500" as="h1">
 				Hello, {me.name}!
 			</Text>
+			<Account />
 		</Layout>
 	);
 };
@@ -35,4 +38,4 @@ Index.getInitialProps = async function (context) {
 	return { me };
 };
 
-export default Index;
+export default withApollo(Index);
